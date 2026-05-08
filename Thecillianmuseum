@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>The Cillian Museum</title>
+
+<style>
+
+body{
+    margin:0;
+    background:black;
+    color:white;
+    font-family:Georgia, serif;
+    scroll-behavior:smooth;
+}
+
+/* SECCIONES */
+section{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    opacity:0;
+    transform:translateY(40px);
+
+    transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+/* CUANDO APARECEN */
+section.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* IMÁGENES */
+img{
+    width:300px;
+    border-radius:15px;
+
+    transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+}
+
+/* EFECTO HOVER */
+img:hover{
+    transform:scale(1.03);
+
+    box-shadow:
+    0 0 30px rgba(255,255,255,0.2);
+}
+
+/* TITULOS */
+h1{
+    letter-spacing:3px;
+    font-size:3rem;
+}
+
+</style>
+</head>
+
+<body>
+
+<section>
+    <h1>The Cillian Museum</h1>
+</section>
+
+<section>
+    <img src="gq.jpg">
+    <h2>PORTADA GQ</h2>
+</section>
+
+<section>
+    <img src="oscar.jpg">
+    <h2>CILLIAN WON AN OSCAR!!!</h2>
+</section>
+
+<script>
+
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+
+    sections.forEach(section => {
+
+        const top = section.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+            section.classList.add("show");
+        }
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
